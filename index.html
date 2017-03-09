@@ -11,21 +11,23 @@
 	<script src="js/controllers/textCtrl.js"></script>
 	<script src="js/model/data.js"></script>
 	<script src="js/controllers/addCtrl.js"></script>
+	<script src="js/controllers/indexCtrl.js"></script>
+    <script src="js/directives/customTotal.js"></script>
 </head>
 <body>
-<div>
+<div ng-controller="indexCtrl">
 	<div>
 		<h1>Рекомендуемые книги для детей</h1>
 	</div>
 	<div ng-controller="addCtrl">
-		<div class="form">
+		<div ng-class="form">
 			<input class="edit" ng-model="name" placeholder="Название">
 		</div>
-		<div class="form">
+		<div ng-class="form">
 			<input type="number" ng-model="page" placeholder="Количество страниц">
 		</div>
-		<div class="form">
-			<button class="button" ng-click="addItem(name, page)">Добавить</button>
+		<div ng-class="form">
+			<button ng-class="button" ng-click="addItem(name, page)">Добавить</button>
 		</div>
 	</div>
     <table ng-controller="textCtrl">
@@ -40,8 +42,13 @@
             <td>{{item.name}}</td>
             <td>{{item.page}}</td>
         </tr>
+        <tr id="total">
+            <td><b>Всего страниц</b></td>
+            <td custom-total=""></td>
+        </tr>
         </tbody>
     </table>
+
 </div>
 </body>
 

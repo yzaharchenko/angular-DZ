@@ -78,3 +78,6 @@ body {
 	position:relative;
 	top:1px;
 }
+#total {
+	background-color: #FF1493;
+}
