@@ -1,10 +1,9 @@
-myApp.controller("addCtrl", function($scope) {
-    $scope.list = data;
+myApp.controller("addCtrl", function($scope, customService) {
+    $scope.list = customService
 
-    $scope.addItem = function (name, page) {
-    	page = parseFloat(page);
-        if(name != "" && !isNaN(page)) {
-        	$scope.list.items.push({name: name, page: page})
+    $scope.addItem = function (new_el, addForm) {
+    	    if(addForm.$valid) {
+        	$scope.list.items.push({name: new_el.name, page: new_el.page})
         }
     }
 });

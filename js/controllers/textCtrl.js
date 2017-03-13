@@ -1,3 +1,3 @@
-myApp.controller("textCtrl", function($scope) {
-	$scope.list = data;
+myApp.controller("textCtrl", function($scope, customService) {
+	$scope.list = customService; 
 });

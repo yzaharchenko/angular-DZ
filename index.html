@@ -9,27 +9,30 @@
 		var myApp = angular.module("myApp", []);
 	</script>
 	<script src="js/controllers/textCtrl.js"></script>
-	<script src="js/model/data.js"></script>
 	<script src="js/controllers/addCtrl.js"></script>
 	<script src="js/controllers/indexCtrl.js"></script>
     <script src="js/directives/customTotal.js"></script>
+    <script src="js/filters/customFilter.js"></script>
+	<script src="js/services/customService.js"></script>
 </head>
 <body>
 <div ng-controller="indexCtrl">
-	<div>
+	<form name="addForm">
+		<div>
 		<h1>Рекомендуемые книги для детей</h1>
 	</div>
-	<div ng-controller="addCtrl">
-		<div ng-class="form">
-			<input class="edit" ng-model="name" placeholder="Название">
+	<div ng-controller="addCtrl" >
+		<div class="form">
+			<input class="edit" ng-model="new.name" placeholder="Название" required>
 		</div>
-		<div ng-class="form">
-			<input type="number" ng-model="page" placeholder="Количество страниц">
+		<div class="form">
+			<input type="number" ng-model="new.page" placeholder="Количество страниц" required>
 		</div>
-		<div ng-class="form">
-			<button ng-class="button" ng-click="addItem(name, page)">Добавить</button>
+		<div class="form">
+			<button class="button" ng-click="addItem(new, addForm)">Добавить</button>
 		</div>
 	</div>
+	</form>
     <table ng-controller="textCtrl">
         <thead>
         <tr>
@@ -39,8 +42,8 @@
         </thead>
         <tbody>
         <tr ng-repeat="item in list.items">
-            <td>{{item.name}}</td>
-            <td>{{item.page}}</td>
+            <td>{{item.name | customFilter}}</td>
+            <td>{{item.page | number:2}}</td>
         </tr>
         <tr id="total">
             <td><b>Всего страниц</b></td>
