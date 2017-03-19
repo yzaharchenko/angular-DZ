@@ -1,0 +1,20 @@
+<table ng-controller="textCtrl">
+    <thead>
+        <tr>
+            <th class="head">Название</th>
+            <th class="head">Количество страниц</th>
+            <th ng-style="mystyle">ДЕЙСТВИЕ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in list.items">
+            <td class="list">{{item.name | customFilter}}</td>
+            <td class="list">{{item.page | number:2}}</td>
+            <td><button class="deleteButton" ng-click="deleteItem(item.id)">Удалить</button></td>
+        </tr>
+        <tr id="total">
+            <td><b>Всего страниц</b></td>
+            <td custom-total=""></td>
+        </tr>
+    </tbody>
+</table>

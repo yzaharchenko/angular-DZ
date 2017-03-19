@@ -1,0 +1,16 @@
+<div>
+<form name="addForm">
+        
+    <div ng-controller="addCtrl" >
+        <div class="form">
+            <input class="edit" ng-model="new.name" placeholder="Название" required>
+        </div>
+        <div class="form">
+            <input type="number" ng-model="new.page" placeholder="Количество страниц" required>
+        </div>
+        <div class="form">
+            <button class="button" ng-click="addItem(new, addForm)">Добавить</button>
+        </div>
+    </div>
+</form>
+</div>

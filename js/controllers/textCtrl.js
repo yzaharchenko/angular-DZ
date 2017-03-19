@@ -2,12 +2,12 @@ myApp.controller("textCtrl", function($scope, $http) {
 	
 	$scope.deleteItem = function (item) {
 		for (var i in $scope.list.items) {
-			if ($scope.list.items[i].name == item) {
+			if ($scope.list.items[i].id == item) {
 				$scope.list.items.splice(i, 1)
 
 				var data = {
                     action: "remove",
-                    index : i
+                    index: i
                 };
                 /*отправка запроса на удаление елемента в модель*/
                 $http({
@@ -17,9 +17,9 @@ myApp.controller("textCtrl", function($scope, $http) {
                 }).then(function (data) {
                     var element = angular.element("<p class='alert'></p>");
                     if (data) {
-                        element.addClass("alert-info").text("Element removed");
+                        element.addClass("alert-info").text("Книга удалена");
                     } else {
-                        element.addClass("alert-danger").text("Element NOT removed");
+                        element.addClass("alert-danger").text("Книга НЕ удалена");
                     }
 
                     var parent = angular.element(document.querySelector("table"));
